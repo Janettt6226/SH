@@ -1,0 +1,45 @@
+<h1>Set up partie</h1>
+
+<h2>1. Sélection des joueurs</h2>
+
+<p>Joueurs</p>
+<ul>
+  <% @players.each do |player| %>
+  <li><%= player.user.username %></li>
+  <% end %>
+</ul>
+
+<% if @players.count >= 7 %>
+  <p>Tous les joueurs sont réunis. C'est parti!</p>
+<% else %>
+  <p>Il manque <%= 7 - @game.players.count %> joueurs</p>
+<% end %>
+
+<%# <%= link_to "Ajouter un joueur", new_game_player_path(@game), id: "add-player-form"%>
+<%= render "players/new", players: @player%>
+
+<h2>Chaque joueur recoit un role secret</h2>
+
+<h2>Président : <%= @president.user.username %></h2>
+
+
+<h2>1er round</h2>
+
+<%= render "players/edit", players: @players %>
+<h2>Chancellier : <%= @chancelier %></h2>
+
+<p>1. Le président pioche 3 cartes</p>
+<h2>Pioche: <%= @stacks.count %> cartes</h2>
+<%=  @stacks.sample(3).map{|card| card.law} %>
+<p>2. Le président défausse 1 carte</p>
+<p>3. Le chancelier reçoit 2 cartes</p>
+<p>4. Le chancelier défausse 1 carte</p>
+<p>3. Le chancelier joue 1 carte sur le plateau</p>
+
+
+
+<p>défausse</p>
+<p>plateau liberal</p>
+<p>plateau fasciste</p>
+
+<%= console %>

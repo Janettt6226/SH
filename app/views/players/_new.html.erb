@@ -1,0 +1,7 @@
+<div>
+  <h1>Nv joueur</h1>
+  <%= simple_form_for [@game, @player] do |f|%>
+    <%= f.association :user, { multiple: true } %>
+    <%= f.submit "Add player!" %>
+  <% end %>
+</div>

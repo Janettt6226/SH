@@ -1,0 +1,8 @@
+<div>
+  <h2>Sélection chancelier</h2>
+  <%= simple_form_for [@game, @player] do |f|%>
+    <%= f.association :user %>
+    <%= f.input :chancelier %>
+    <%= f.submit "Désigner comme chancelier" %>
+  <% end %>
+</div>
