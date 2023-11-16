@@ -1,5 +1,7 @@
 <h1>Set up partie</h1>
 
+<%# 1. O %>
+
 <h2>1. Sélection des joueurs</h2>
 
 <p>Joueurs</p>
@@ -30,7 +32,7 @@
 
 <p>1. Le président pioche 3 cartes</p>
 <h2>Pioche: <%= @stacks.count %> cartes</h2>
-<%=  @stacks.sample(3).map{|card| card.law} %>
+<%= @president_selection = @stacks.sample(3).map{|card| card.law} %>
 <p>2. Le président défausse 1 carte</p>
 <p>3. Le chancelier reçoit 2 cartes</p>
 <p>4. Le chancelier défausse 1 carte</p>

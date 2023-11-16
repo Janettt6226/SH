@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_14_092833) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_14_123740) do
+  create_table "boards", force: :cascade do |t|
+    t.integer "liberal", default: 0
+    t.integer "fascist", default: 0
+    t.integer "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_boards_on_game_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,10 +28,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_092833) do
   create_table "players", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "game_id", null: false
-    t.boolean "president"
-    t.boolean "chancelier"
+    t.boolean "president", default: false
+    t.boolean "chancelier", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
+    t.string "parti"
+    t.boolean "killed", default: false
     t.index ["game_id"], name: "index_players_on_game_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
@@ -56,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_092833) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boards", "games"
   add_foreign_key "players", "games"
   add_foreign_key "players", "users"
   add_foreign_key "rounds", "games"

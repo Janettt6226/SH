@@ -3,4 +3,7 @@ class Player < ApplicationRecord
   belongs_to :user
   belongs_to :game
   validates :user_id, uniqueness: { scope: :game_id, message: "Already participate to this game" }
+  
+  ROLE = %i[liberal nazi hitler]
+  PARTI = %i[liberal nazi]
 end

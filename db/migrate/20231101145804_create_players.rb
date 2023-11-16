@@ -3,8 +3,8 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
     create_table :players do |t|
       t.references :user, null: false, foreign_key: true
       t.references :game, null: false, foreign_key: true
-      t.boolean :president
-      t.boolean :chancelier
+      t.boolean :president, default: false
+      t.boolean :chancelier, default: false
 
       t.timestamps
     end
