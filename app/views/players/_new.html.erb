@@ -1,7 +1,8 @@
 <div>
   <h1>Nv joueur</h1>
   <%= simple_form_for [@game, @player] do |f|%>
-    <%= f.association :user, { multiple: true } %>
-    <%= f.submit "Add player!" %>
+    <%# f.input :user_id, as: :check_boxes, collection: User.all.map{ |user| [user.username, user.id] }, label: "Sélection des joueurs : " %>
+    <%= f.input :selected_usernames, collection: User.all.map(&:username), label: "Sélectionner les joueurs", input_html: { multiple: true }%>
+    <%= f.submit "Ajouter!" %>
   <% end %>
 </div>

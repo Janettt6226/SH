@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :games, only: %i[show new create] do
+    get "setup", to: "games#setup"
     resources :players, only: %i[show new create edit update]
     resources :rounds, only: %i[index show new create edit update]
     resources :boards, only: %i[show new create edit update]

@@ -1,14 +1,18 @@
 class PlayersController < ApplicationController
 
   def new
-    @player = Player.new
+    # @player = Player.new
   end
 
   def create
-    @player = Player.new(player_params)
     @game = Game.find(params[:game_id])
+    @player = Player.new(player_params)
     @player.game_id = @game.id
-    @player.save!
+    if @player.save!
+      redirect_to @game
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -23,7 +27,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:chancelier, :president, :game_id, :user_id)
+    params.require(:player).permit(:chancelier, :president, :game_id, :username, :position, :user_id, selected_usernames: [])
   end
 
 end

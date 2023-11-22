@@ -1,0 +1,20 @@
+<h1>Game setup</h1>
+
+<h2>Step 1: Sélection des joueurs</h2>
+<p>Joueurs prêts:</p>
+<ul>
+  <% @players.each do |player| %>
+  <li><%= player.user.username %></li>
+  <% end %>
+</ul>
+
+<% if @players.count >= 7 %>
+  <p>Tous les joueurs sont réunis. C'est parti!</p>
+  <button>C'est parti!</button>
+<% else %>
+  <p>Il manque <%= 7 - @players.count %> joueurs</p>
+  <%= render "players/new", players: @player %>
+<% end %>
+
+
+<%= console %>
