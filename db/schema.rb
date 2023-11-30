@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_122939) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_083044) do
   create_table "boards", force: :cascade do |t|
     t.integer "liberal", default: 0
     t.integer "fascist", default: 0
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_122939) do
     t.string "parti"
     t.boolean "killed", default: false
     t.string "username"
-    t.integer "position"
+    t.integer "position", default: 0
     t.index ["game_id"], name: "index_players_on_game_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end

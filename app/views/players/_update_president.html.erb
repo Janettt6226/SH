@@ -1,0 +1,4 @@
+<%= simple_form_for [:save_president, @game], url: save_president_game_players_path(@game), method: :patch do |f| %>
+  <%= f.input :players, collection: @players.map {|player| [player.user.username, player.user.id]  }, label: "Sélection du président :"%>
+  <%= f.submit "Désigner" %>
+<% end %>

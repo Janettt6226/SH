@@ -5,9 +5,9 @@ class GamesController < ApplicationController
     @players = @game.players
     @player = Player.new
     @stacks = @game.stacks
-    @president = @players.sample
+    # @president = @players.sample
     # @president.president = true
-    @chancelier = @players.select{ |player| player.chancelier? }
+    # @chancelier = @players.select{ |player| player.chancelier? }
   end
 
   def setup
@@ -18,6 +18,7 @@ class GamesController < ApplicationController
     if @players.count == 7
       set_roles
     end
+    @round = Round.new
   end
 
   def new
@@ -49,14 +50,15 @@ class GamesController < ApplicationController
     @available_parties = Player::PARTIS.dup
 
     @players.each do |player|
-      role = @available_roles.sample
-      parti = @available_parties.sample
+      @available_roles.shuffle
+      @available_parties.shuffle
+      player.role = @available_roles.first
+      player.parti = @available_parties.first
 
-      @available_roles.delete(role)
-      @available_parties.delete(parti)
+      player.update!(role: player.role, parti: player.parti)
 
-      player.update(role: role, parti: parti)
+      @available_roles.shift
+      @available_parties.shift
     end
   end
-
 end

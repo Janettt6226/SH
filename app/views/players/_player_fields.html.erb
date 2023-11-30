@@ -1,0 +1,3 @@
+<%= f.fields_for :players, player do |player_form| %>
+  <%= player_form.input :position, label: "Position for #{player_form.object.username}", input_html: { min: 1, max: 8 } %>
+<% end %>

@@ -1,0 +1,7 @@
+<%# <%= render action: "rounds/create", rounds: @round %> %>
+  <%= simple_form_for [@game, @round] do |f|%>
+    <%= f.submit "C'est parti !" %>
+  <% end %>
+
+
+<%# <%= link_to "C'est parti !", new_game_round_path(@game, @round) %> %>

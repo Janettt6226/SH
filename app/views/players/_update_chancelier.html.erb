@@ -1,0 +1,4 @@
+<%= simple_form_for [:save_chancelier, @game], url: save_chancelier_game_players_path(@game), method: :patch do |f| %>
+  <%= f.input :players, collection: @players.map {|player| [player.user.username, player.user.id]  }, label: "Sélection chancelier :"%>
+  <%= f.submit "Elir" %>
+<% end %>

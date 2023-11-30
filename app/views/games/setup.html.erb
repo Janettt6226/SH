@@ -9,12 +9,14 @@
 </ul>
 
 <% if @players.count >= 7 %>
-  <p>Tous les joueurs sont réunis. C'est parti!</p>
-  <button>C'est parti!</button>
+  <p>Tous les joueurs sont réunis !</p>
+  <%# <p>Maintenant renseigne leurs positions</p> %>
+  <%# <%= render "players/update_positions", players: @player %> %>
 <% else %>
   <p>Il manque <%= 7 - @players.count %> joueurs</p>
-  <%= render "players/new", players: @player %>
+  <%= render "players/new", players: @players %>
 <% end %>
 
+<%= render "rounds/new" %>
 
 <%= console %>

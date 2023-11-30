@@ -7,7 +7,15 @@ Rails.application.routes.draw do
 
   resources :games, only: %i[show new create] do
     get "setup", to: "games#setup"
-    resources :players, only: %i[show new create edit update]
+    resources :players, only: %i[show new create] do
+      collection do
+        get :update_president
+        patch :save_president
+        get :update_chancelier
+        patch :save_chancelier
+      end
+    end
+    resources :players, only: %i[edit update]
     resources :rounds, only: %i[index show new create edit update]
     resources :boards, only: %i[show new create edit update]
   end

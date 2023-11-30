@@ -6,12 +6,13 @@ class Player < ApplicationRecord
   validates :user_id, uniqueness: { scope: :game_id, message: "Already participate to this game" }
   # validates :username, uniqueness: { scope: :game_id, message: "Already participate to this game" }
   # attr_accessor :usernames
+  validates :position, numericality: { only_integer: true, minimum: 1, maximum: 10 }
 
 
   ROLES = %w[liberal liberal liberal liberal nazi nazi hitler]
   PARTIS = %w[liberal liberal liberal liberal nazi nazi nazi]
 
-  validate :validate_selected_usernames
+  # validate :validate_selected_usernames
 
   attr_accessor :selected_usernames
 

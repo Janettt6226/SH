@@ -1,0 +1,20 @@
+<h1>Round #<%= @round.id %></h1>
+
+<h2>Sélection président</h2>
+<%= render "players/update_president", players: @players %>
+
+<h2>Election chancelier</h2>
+<%= render "players/update_chancelier", players: @players %>
+
+<p>Le président <%= @president %> pioche 3 cartes</p>
+<p><%= @president %> donne 2 cartes à <%= @chancelier %></p>
+
+<%# Shuffle la pioche %>
+<%# Sélectionner les 3 premières %>
+<%# Le président sélectionne un carte X à défausser %>
+<%# X est supprimée de la PILE %>
+<%# X s'ajoute dans la DISCARD %>
+
+<%# Le chancelier recoit les 2 cartes %>
+
+<%= console %>
